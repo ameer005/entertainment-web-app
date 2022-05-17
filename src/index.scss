@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+:root {
+  --color-red: hsl(0, 97%, 63%);
+  --color-background: hsl(221, 35%, 9%);
+  --color-white: hsl(0, 0%, 100%);
+  --color-blue-dark: hsl(223, 30%, 9%);
+  --color-blue-light: hsl(223, 36%, 14%);
+  --color-blue-grey: hsl(223, 23%, 46%);
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  line-height: 1;
+}
+
+.container {
+  min-height: 100vh;
+}
