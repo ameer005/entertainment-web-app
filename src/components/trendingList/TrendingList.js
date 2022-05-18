@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import styles from "./TrendingList.module.scss";
-import TrendingCard from "../trendingCard/TrendingCard";
+import MovieCard from "../movieCard/MovieCard";
 import { fetchTrendings } from "../../features/movies/movieSlice";
 
 const TrendingList = () => {
@@ -22,7 +22,7 @@ const TrendingList = () => {
 
     return movies.map((movie) => (
       <SwiperSlide key={movie.id}>
-        <TrendingCard data={movie} class="big" />
+        <MovieCard data={movie} class="big" />
       </SwiperSlide>
     ));
   };

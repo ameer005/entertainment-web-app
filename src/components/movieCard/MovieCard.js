@@ -2,7 +2,7 @@ import React from "react";
 
 import { IMG_URL } from "../../apis/movieDpApi";
 import BookmarkBtn from "../bookmarkBtn/BookmarkBtn";
-import styles from "./TrendingCard.module.scss";
+import styles from "./MovieCard.module.scss";
 import movieIcon from "../../assets/icon-category-movie.svg";
 import seriesIcon from "../../assets/icon-category-tv.svg";
 import playIcon from "../../assets/icon-play.svg";
@@ -36,9 +36,13 @@ const TrendingCard = (props) => {
       <div className={styles.details}>
         <div className={styles.info}>
           <div className={styles.release_date}>
-            {props.data.release_date
-              ? props.data.release_date.slice(0, 4)
-              : props.data.release_date}
+            {props.data.media_type === "movie"
+              ? props.data.release_date
+                ? props.data.release_date.slice(0, 4)
+                : props.data.release_date
+              : props.data.first_air_date
+              ? props.data.first_air_date.slice(0, 4)
+              : props.data.first_air_date}
           </div>
 
           <div className={styles.category}>
@@ -57,7 +61,11 @@ const TrendingCard = (props) => {
           }`}</div>
         </div>
 
-        <div className={styles.title}>{props.data.original_title}</div>
+        <div className={styles.title}>
+          {props.data.media_type === "movie"
+            ? props.data.original_title
+            : props.data.name}
+        </div>
       </div>
     </div>
   );
