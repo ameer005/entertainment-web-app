@@ -1,9 +1,4 @@
 .card {
-  background-color: red;
-  width: 45rem;
-  height: 25rem;
-  position: relative;
-  overflow: hidden;
   border-radius: 0.9rem;
   cursor: pointer;
 
@@ -13,14 +8,6 @@
     width: 100%;
     object-fit: cover;
     transition: all 0.2s;
-  }
-
-  &:hover &__img {
-    transform: scale(1.1);
-  }
-
-  &:hover .hover_container {
-    opacity: 1;
   }
 }
 
@@ -32,12 +19,8 @@
 }
 
 .details {
-  position: absolute;
-  bottom: 1.8rem;
-  left: 1.8rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
   z-index: 5;
 }
 
@@ -121,4 +104,68 @@
 
 .play_icon {
   width: 3.2rem;
+}
+
+.big {
+  width: 45rem;
+  height: 25rem;
+  overflow: hidden;
+  position: relative;
+
+  &:hover &__img {
+    transform: scale(1.1);
+  }
+
+  &:hover .hover_container {
+    opacity: 1;
+  }
+
+  .details {
+    position: absolute;
+    bottom: 1.8rem;
+    left: 1.8rem;
+    gap: 0.6rem;
+  }
+
+  .info {
+    font-size: 1.4rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+}
+
+.small {
+  position: relative;
+  width: 30rem;
+
+  .img_box {
+    position: relative;
+    height: 17rem;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+    border-radius: 0.9rem;
+
+    &:hover &__img {
+      transform: scale(1.1);
+    }
+
+    &:hover .hover_container {
+      opacity: 1;
+    }
+  }
+
+  .details {
+    gap: 0.4rem;
+  }
+
+  .info {
+    font-size: 1.3rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    line-height: 1.4;
+  }
 }

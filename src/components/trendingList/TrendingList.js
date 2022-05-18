@@ -22,7 +22,7 @@ const TrendingList = () => {
 
     return movies.map((movie) => (
       <SwiperSlide key={movie.id}>
-        <TrendingCard data={movie} />
+        <TrendingCard data={movie} class="big" />
       </SwiperSlide>
     ));
   };
