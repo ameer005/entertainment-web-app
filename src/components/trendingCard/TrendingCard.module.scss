@@ -1,15 +1,25 @@
 .container {
-  display: flex;
+  // display: flex;
 }
 
 .card {
-  // background-color: red;
-  position: relative;
+  background-color: red;
+  width: 45rem;
   height: 25rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 
   &__img {
-    // width: 100%;
+    display: block;
     height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.2s;
+  }
+
+  &:hover &__img {
+    transform: scale(1.1);
   }
 }
 
