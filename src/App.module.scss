@@ -1,2 +1,21 @@
 .app {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: 3.2rem;
+  row-gap: 3.2rem;
+  padding: 3.2rem;
+}
+
+.header {
+  grid-row: span 2;
+  // background-color: white;
+}
+
+.search {
+  // background-color: red;
+}
+
+.main {
+  // background-color: pink;
 }

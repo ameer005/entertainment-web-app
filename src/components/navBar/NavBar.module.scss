@@ -1,0 +1,45 @@
+.header {
+  height: 90vh;
+  background-color: var(--color-blue-light);
+
+  padding: 3.2rem;
+  border-radius: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 7rem;
+}
+
+.logo {
+  transform: scale(1);
+  fill: var(--color-red);
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    align-items: center;
+  }
+  &__icon {
+    fill: var(--color-blue-grey);
+    transition: all 0.3s;
+
+    &:hover {
+      fill: var(--color-red);
+    }
+  }
+}
+
+.active {
+  fill: var(--color-white);
+}
+
+.avatar {
+  margin-top: auto;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
