@@ -1,11 +1,13 @@
 import React from "react";
-import styles from "./TrendingCard.module.scss";
+
 import { IMG_URL } from "../../apis/movieDpApi";
+import BookmarkBtn from "../bookmarkBtn/BookmarkBtn";
+import styles from "./TrendingCard.module.scss";
 import movieIcon from "../../assets/icon-category-movie.svg";
 import seriesIcon from "../../assets/icon-category-tv.svg";
+import playIcon from "../../assets/icon-play.svg";
 
 const TrendingCard = ({ data }) => {
-  console.log(data);
   return (
     <div className={styles.card}>
       <img
@@ -13,6 +15,10 @@ const TrendingCard = ({ data }) => {
         src={`${IMG_URL}${data.backdrop_path}`}
         alt=""
       />
+
+      <div className={styles.bookmark}>
+        <BookmarkBtn />
+      </div>
 
       <div className={styles.details}>
         <div className={styles.info}>
@@ -35,6 +41,13 @@ const TrendingCard = ({ data }) => {
         </div>
 
         <div className={styles.title}>{data.original_title}</div>
+      </div>
+
+      <div className={styles.hover_container}>
+        <button className={styles.hover_btn}>
+          <img className={styles.play_icon} src={playIcon} alt="play" />
+          Play
+        </button>
       </div>
     </div>
   );

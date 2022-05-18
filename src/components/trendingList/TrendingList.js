@@ -15,7 +15,7 @@ const TrendingList = () => {
 
   const renderTrendingList = () => {
     if (data.status !== "success") return;
-    const movies = data.trendingList.results.slice(0, 1);
+    const movies = data.trendingList.results.slice(0, 4);
 
     return movies.map((movie) => <TrendingCard key={movie.id} data={movie} />);
   };
