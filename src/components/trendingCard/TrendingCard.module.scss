@@ -1,7 +1,3 @@
-.container {
-  // display: flex;
-}
-
 .card {
   background-color: red;
   width: 45rem;
@@ -36,26 +32,47 @@
   font-size: 1.4rem;
   display: flex;
   align-items: center;
+  gap: 1.4rem;
+  font-weight: 400;
+
   color: var(--color-white);
 }
 
 .release_date {
+  position: relative;
+
+  &::after {
+    content: ".";
+    position: absolute;
+    top: -50%;
+    transform: translateY(25%);
+    margin-left: 0.4rem;
+  }
 }
 
 .category {
+  position: relative;
   display: flex;
   align-items: center;
+  gap: 0.4rem;
 
   &__icon {
-    fill: var(--color-white);
-    transform: scale(0.6);
+    width: 1rem;
+    display: block;
   }
 
   &__name {
+    &::after {
+      content: ".";
+      position: absolute;
+      top: -50%;
+      transform: translateY(25%);
+      margin-left: 0.4rem;
+    }
   }
 }
 
 .title {
   font-size: 2.4rem;
-  font-weight: 700;
+  font-weight: 500;
 }
