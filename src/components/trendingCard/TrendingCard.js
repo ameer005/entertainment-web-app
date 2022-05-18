@@ -23,7 +23,9 @@ const TrendingCard = ({ data }) => {
       <div className={styles.details}>
         <div className={styles.info}>
           <div className={styles.release_date}>
-            {data.release_date.slice(0, 4)}
+            {data.release_date
+              ? data.release_date.slice(0, 4)
+              : data.release_date}
           </div>
 
           <div className={styles.category}>

@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
 
 import styles from "./TrendingList.module.scss";
 import TrendingCard from "../trendingCard/TrendingCard";
@@ -15,14 +18,20 @@ const TrendingList = () => {
 
   const renderTrendingList = () => {
     if (data.status !== "success") return;
-    const movies = data.trendingList.results.slice(0, 4);
+    const movies = data.trendingList.results;
 
-    return movies.map((movie) => <TrendingCard key={movie.id} data={movie} />);
+    return movies.map((movie) => (
+      <SwiperSlide key={movie.id}>
+        <TrendingCard data={movie} />
+      </SwiperSlide>
+    ));
   };
 
   return (
     <div className={styles.list_container}>
-      <div className={styles.list}>{renderTrendingList()}</div>
+      <Swiper slidesPerView={10.9} className="mySwiper">
+        {renderTrendingList()}
+      </Swiper>
     </div>
   );
 };
