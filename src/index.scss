@@ -37,6 +37,10 @@ li {
   list-style: none;
 }
 
+.swiper-wrapper {
+  max-width: 0rem !important;
+}
+
 .swiper-slide {
   width: auto !important;
   margin-right: 4rem !important;

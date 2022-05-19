@@ -3,6 +3,7 @@ import styles from "./Home.module.scss";
 
 import Heading from "../../components/heading/Heading";
 import TrendingList from "../../components/trendingList/TrendingList";
+import RecommendationsList from "../../components/recommendationsList/RecommendationsList";
 
 const Home = () => {
   return (
@@ -14,6 +15,8 @@ const Home = () => {
       </div>
       <div className={styles.recommended}>
         <Heading text="Recommended for you" />
+
+        <RecommendationsList />
       </div>
     </div>
   );

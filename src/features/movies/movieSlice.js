@@ -10,12 +10,27 @@ export const fetchTrendings = createAsyncThunk(
   }
 );
 
+export const fetchRecommendation = createAsyncThunk(
+  "movies/fetchRecommendation",
+  async () => {
+    const { data } = await movieDpApi.get("/discover/movie");
+
+    return data;
+  }
+);
+
 const initialState = {
   trendings: {
     trendingList: {},
     status: null,
   },
+
   bookmarked: [],
+
+  recommendations: {
+    recommendationList: {},
+    status: null,
+  },
 };
 
 const movieSlice = createSlice({
@@ -45,7 +60,17 @@ const movieSlice = createSlice({
       state.trendings.status = "failed";
     },
 
-    // FETCHING ALL MOVIES
+    // FETCHING Recommendation
+    [fetchRecommendation.pending]: (state) => {
+      state.recommendations.status = "loading";
+    },
+    [fetchRecommendation.fulfilled]: (state, { payload }) => {
+      state.recommendations.status = "success";
+      state.recommendations.recommendationList = payload;
+    },
+    [fetchRecommendation.rejected]: (state) => {
+      state.recommendations.status = "failed";
+    },
   },
 });
 

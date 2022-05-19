@@ -41,7 +41,7 @@ const TrendingCard = (props) => {
       <div className={styles.details}>
         <div className={styles.info}>
           <div className={styles.release_date}>
-            {props.data.media_type === "movie"
+            {props.data.release_date
               ? props.data.release_date.slice(0, 4)
               : props.data.first_air_date.slice(0, 4)}
           </div>
@@ -49,12 +49,12 @@ const TrendingCard = (props) => {
           <div className={styles.category}>
             <img
               className={styles.category__icon}
-              src={`${
-                props.data.media_type === "movie" ? movieIcon : seriesIcon
-              }`}
+              src={`${props.data.release_date ? movieIcon : seriesIcon}`}
               alt=""
             />
-            <p className={styles.category__name}>{props.data.media_type}</p>
+            <p className={styles.category__name}>
+              {props.data.release_date ? "movie" : "tv"}
+            </p>
           </div>
 
           <div className={styles.age_limit}>{`${
@@ -63,7 +63,7 @@ const TrendingCard = (props) => {
         </div>
 
         <div className={styles.title}>
-          {props.data.media_type === "movie"
+          {props.data.release_date
             ? props.data.original_title
             : props.data.name}
         </div>
