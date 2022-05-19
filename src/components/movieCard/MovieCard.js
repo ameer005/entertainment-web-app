@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { IMG_URL } from "../../apis/movieDpApi";
 import BookmarkBtn from "../bookmarkBtn/BookmarkBtn";
@@ -8,6 +8,7 @@ import seriesIcon from "../../assets/icon-category-tv.svg";
 import playIcon from "../../assets/icon-play.svg";
 
 const TrendingCard = (props) => {
+  const [bookmarked, setBookmarked] = useState(false);
   return (
     <div
       className={`${styles.card} ${
@@ -30,19 +31,19 @@ const TrendingCard = (props) => {
       </div>
 
       <div className={styles.bookmark}>
-        <BookmarkBtn />
+        <BookmarkBtn
+          bookmarked={bookmarked}
+          setBookmarked={setBookmarked}
+          data={props.data}
+        />
       </div>
 
       <div className={styles.details}>
         <div className={styles.info}>
           <div className={styles.release_date}>
             {props.data.media_type === "movie"
-              ? props.data.release_date
-                ? props.data.release_date.slice(0, 4)
-                : props.data.release_date
-              : props.data.first_air_date
-              ? props.data.first_air_date.slice(0, 4)
-              : props.data.first_air_date}
+              ? props.data.release_date.slice(0, 4)
+              : props.data.first_air_date.slice(0, 4)}
           </div>
 
           <div className={styles.category}>

@@ -112,7 +112,7 @@
   overflow: hidden;
   position: relative;
 
-  &:hover &__img {
+  &:hover .card__img {
     transform: scale(1.1);
   }
 
@@ -147,7 +147,7 @@
     margin-bottom: 1.2rem;
     border-radius: 0.9rem;
 
-    &:hover &__img {
+    &:hover .card__img {
       transform: scale(1.1);
     }
 
