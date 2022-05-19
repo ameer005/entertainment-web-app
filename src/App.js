@@ -7,6 +7,7 @@ import Home from "./pages/home/Home";
 import Movies from "./pages/movies/Movies";
 import TvSeries from "./pages/tvSeries/TvSeries";
 import SearchBar from "./components/searchBar/SearchBar";
+import Search from "./pages/search/Search";
 
 import NavBar from "./components/navBar/NavBar";
 
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/movies" exact element={<Movies />} />
             <Route path="/tvsereis" exact element={<TvSeries />} />
             <Route path="/bookmarked" exact element={<Bookmarked />} />
+            <Route path="/search" exact element={<Search />} />
           </Routes>
         </main>
       </BrowserRouter>

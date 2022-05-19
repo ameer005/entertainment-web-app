@@ -34,6 +34,20 @@ export const fetchTvSeries = createAsyncThunk(
   }
 );
 
+export const fetchSearchResults = createAsyncThunk(
+  "movies/fetchSearchResults",
+  async (term) => {
+    const { data } = await movieDpApi.get(`/search/multi`, {
+      params: {
+        query: term,
+        include_adult: true,
+      },
+    });
+
+    return data;
+  }
+);
+
 const initialState = {
   trendings: {
     trendingList: {},
@@ -54,6 +68,11 @@ const initialState = {
 
   tvSeries: {
     tvSeriesList: {},
+    status: null,
+  },
+
+  search: {
+    searchResults: {},
     status: null,
   },
 };
@@ -119,6 +138,18 @@ const movieSlice = createSlice({
     },
     [fetchTvSeries.rejected]: (state) => {
       state.tvSeries.status = "failed";
+    },
+
+    // Fetching Search Results
+    [fetchSearchResults.pending]: (state) => {
+      state.search.status = "loading";
+    },
+    [fetchSearchResults.fulfilled]: (state, { payload }) => {
+      state.search.status = "success";
+      state.search.searchResults = payload;
+    },
+    [fetchSearchResults.rejected]: (state) => {
+      state.search.status = "failed";
     },
   },
 });
