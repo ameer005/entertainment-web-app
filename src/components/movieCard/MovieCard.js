@@ -9,6 +9,8 @@ import playIcon from "../../assets/icon-play.svg";
 
 const TrendingCard = (props) => {
   const [bookmarked, setBookmarked] = useState(false);
+
+  if (!props.data.backdrop_path) return;
   return (
     <div
       className={`${styles.card} ${

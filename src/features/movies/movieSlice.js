@@ -19,6 +19,21 @@ export const fetchRecommendation = createAsyncThunk(
   }
 );
 
+export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
+  const { data } = await movieDpApi.get("/movie/now_playing");
+
+  return data;
+});
+
+export const fetchTvSeries = createAsyncThunk(
+  "movies/fetchTvSeries",
+  async () => {
+    const { data } = await movieDpApi.get("/tv/on_the_air");
+
+    return data;
+  }
+);
+
 const initialState = {
   trendings: {
     trendingList: {},
@@ -29,6 +44,16 @@ const initialState = {
 
   recommendations: {
     recommendationList: {},
+    status: null,
+  },
+
+  movies: {
+    moviesList: {},
+    status: null,
+  },
+
+  tvSeries: {
+    tvSeriesList: {},
     status: null,
   },
 };
@@ -70,6 +95,30 @@ const movieSlice = createSlice({
     },
     [fetchRecommendation.rejected]: (state) => {
       state.recommendations.status = "failed";
+    },
+
+    // Fetching Movies
+    [fetchMovies.pending]: (state) => {
+      state.movies.status = "loading";
+    },
+    [fetchMovies.fulfilled]: (state, { payload }) => {
+      state.movies.status = "success";
+      state.movies.moviesList = payload;
+    },
+    [fetchMovies.rejected]: (state) => {
+      state.movies.status = "failed";
+    },
+
+    // Fetching TV Series
+    [fetchTvSeries.pending]: (state) => {
+      state.tvSeries.status = "loading";
+    },
+    [fetchTvSeries.fulfilled]: (state, { payload }) => {
+      state.tvSeries.status = "success";
+      state.tvSeries.tvSeriesList = payload;
+    },
+    [fetchTvSeries.rejected]: (state) => {
+      state.tvSeries.status = "failed";
     },
   },
 });

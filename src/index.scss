@@ -37,6 +37,14 @@ li {
   list-style: none;
 }
 
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  // grid-template-columns: repeat(4, 1fr);
+  row-gap: 3.2rem;
+  column-gap: 3.2rem;
+}
+
 .swiper-wrapper {
   max-width: 0rem !important;
 }

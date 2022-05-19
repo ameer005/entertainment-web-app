@@ -24,7 +24,7 @@ const RecommendationsList = () => {
 
   return (
     <div className={styles.list_container}>
-      <div className={styles.list}>{renderRecommendationsList()}</div>
+      <div className="list-grid">{renderRecommendationsList()}</div>
     </div>
   );
 };
