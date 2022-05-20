@@ -17,7 +17,6 @@ const Search = () => {
     );
 
     return movie.map((movie) => {
-      console.log(movie.media_type);
       return <MovieCard key={movie.id} data={movie} class="small" />;
     });
   };
@@ -29,7 +28,6 @@ const Search = () => {
     );
 
     return series.map((series) => {
-      console.log(series.media_type);
       return <MovieCard key={series.id} data={series} class="small" />;
     });
   };

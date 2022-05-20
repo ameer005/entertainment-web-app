@@ -7,7 +7,11 @@ import movieIcon from "../../assets/icon-category-movie.svg";
 import seriesIcon from "../../assets/icon-category-tv.svg";
 import playIcon from "../../assets/icon-play.svg";
 
+import DetailsModal from "../detailsModal/DetailsModal";
+
 const TrendingCard = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
   const [bookmarked, setBookmarked] = useState(false);
 
   if (!props.data.backdrop_path) return;
@@ -25,7 +29,10 @@ const TrendingCard = (props) => {
           alt=""
         />
 
-        <div className={styles.hover_container}>
+        <div
+          onClick={() => setShowModal(true)}
+          className={styles.hover_container}
+        >
           <button className={styles.hover_btn}>
             <img className={styles.play_icon} src={playIcon} alt="play" />
             Play
@@ -75,6 +82,9 @@ const TrendingCard = (props) => {
             : props.data.name}
         </div>
       </div>
+      {showModal ? (
+        <DetailsModal setShowModal={setShowModal} data={props.data} />
+      ) : null}
     </div>
   );
 };
