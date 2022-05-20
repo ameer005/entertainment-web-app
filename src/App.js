@@ -12,20 +12,8 @@ import Search from "./pages/search/Search";
 import NavBar from "./components/navBar/NavBar";
 
 import movieDpApi from "./apis/movieDpApi";
-// import axios from "axios";
-
-// const key = "f07b676b2eda7809eddd4788abf9aa4a";
 
 const App = () => {
-  // useEffect(() => {
-  //   const fetchTrending = async () => {
-  //     const data = await movieDpApi.get(`/trending/all/day`);
-  //     console.log(d);
-  //   };
-
-  //   fetchTrending();
-  // }, []);
-
   return (
     <div className={styles.app}>
       <BrowserRouter>

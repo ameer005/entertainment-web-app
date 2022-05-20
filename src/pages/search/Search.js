@@ -8,28 +8,28 @@ const Search = () => {
   const data = useSelector((state) => state.movies.search);
   if (data.status === "failed") return;
 
-  console.log(data.status);
-
   const renderMovies = () => {
     if (data.status !== "success") return;
     const movie = data.searchResults.results.filter(
-      (movie) => movie.release_date
+      (movie) => movie.release_date && movie.media_type !== "person"
     );
 
-    return movie.map((movie) => (
-      <MovieCard key={movie.id} data={movie} class="small" />
-    ));
+    return movie.map((movie) => {
+      console.log(movie.media_type);
+      return <MovieCard key={movie.id} data={movie} class="small" />;
+    });
   };
 
   const renderSeries = () => {
     if (data.status !== "success") return;
     const series = data.searchResults.results.filter(
-      (movie) => !movie.release_date
+      (movie) => !movie.release_date && movie.media_type !== "person"
     );
 
-    return series.map((movie) => (
-      <MovieCard key={movie.id} data={movie} class="small" />
-    ));
+    return series.map((series) => {
+      console.log(series.media_type);
+      return <MovieCard key={series.id} data={series} class="small" />;
+    });
   };
 
   return (

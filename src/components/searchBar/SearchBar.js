@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./SearchBar.module.scss";
 import search from "../../assets/icon-search.svg";
 import { useNavigate } from "react-router-dom";
@@ -10,13 +10,24 @@ const SearchBar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (searchInput) dispatch(fetchSearchResults(searchInput));
+    }, 300);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchInput]);
+
+  useEffect(() => {
+    setSearchInput("");
+  }, [navigate]);
+
   const onSubmit = (e) => {
     e.preventDefault();
-
-    dispatch(fetchSearchResults(searchInput));
   };
 
-  const onChange = () => {};
   return (
     <form onSubmit={onSubmit} className={styles.form}>
       <img className={styles.icon_search} src={search} alt="search icon" />

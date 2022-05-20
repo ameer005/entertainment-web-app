@@ -11,6 +11,7 @@ const TrendingCard = (props) => {
   const [bookmarked, setBookmarked] = useState(false);
 
   if (!props.data.backdrop_path) return;
+
   return (
     <div
       className={`${styles.card} ${
@@ -44,8 +45,12 @@ const TrendingCard = (props) => {
         <div className={styles.info}>
           <div className={styles.release_date}>
             {props.data.release_date
-              ? props.data.release_date.slice(0, 4)
-              : props.data.first_air_date.slice(0, 4)}
+              ? props.data.release_date
+                ? props.data.release_date.slice(0, 4)
+                : props.data.release_date
+              : props.data.first_air_date
+              ? props.data.first_air_date.slice(0, 4)
+              : props.data.first_air_date}
           </div>
 
           <div className={styles.category}>
