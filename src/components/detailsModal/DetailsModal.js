@@ -81,9 +81,9 @@ const DetailsModal = (props) => {
             {props.data.name || props.data.original_title}
           </div>
 
-          <div className={styles.genres}>
+          <div className={styles.genres_container}>
             <div className={styles.heading}>Genres</div>
-            {renderGenresList()}
+            <div className={styles.genres}>{renderGenresList()}</div>
           </div>
 
           <div className={styles.sypnosis}>

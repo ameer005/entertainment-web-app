@@ -85,3 +85,18 @@
   background-color: var(--color-white);
   color: var(--color-red);
 }
+
+.genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.genre {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--color-red);
+  background-color: var(--color-white);
+  padding: 0.4rem 1.2rem;
+  border-radius: 0.9rem;
+}
