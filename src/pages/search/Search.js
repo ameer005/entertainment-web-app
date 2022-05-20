@@ -4,6 +4,8 @@ import { useSelector } from "react-redux";
 import Heading from "../../components/heading/Heading";
 import MovieCard from "../../components/movieCard/MovieCard";
 
+import { motion } from "framer-motion";
+
 const Search = () => {
   const data = useSelector((state) => state.movies.search);
   if (data.status === "failed") return;
@@ -33,7 +35,11 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <motion.div
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className={styles.bookmarked_movies}>
         <Heading text="Movies" />
         <div className={styles.list_container}>
@@ -47,7 +53,7 @@ const Search = () => {
           <div className="list-grid">{renderSeries()}</div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

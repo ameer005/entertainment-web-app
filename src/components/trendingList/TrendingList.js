@@ -7,6 +7,7 @@ import "swiper/css";
 import styles from "./TrendingList.module.scss";
 import MovieCard from "../movieCard/MovieCard";
 import { fetchTrendings } from "../../features/movies/movieSlice";
+import LoaderCircle from "../loaderCircle/LoaderCircle";
 
 const TrendingList = () => {
   const dispatch = useDispatch();

@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import Heading from "../../components/heading/Heading";
 import MovieCard from "../../components/movieCard/MovieCard";
 
+import { motion } from "framer-motion";
+
 const Bookmarked = () => {
   const data = useSelector((state) => state.movies.bookmarked);
 
@@ -25,23 +27,46 @@ const Bookmarked = () => {
   };
   // console.log(data);
 
-  renderBookmarkedMovies();
   return (
-    <div>
+    <motion.div
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className={styles.bookmarked_movies}>
         <Heading text="Bookmarked Movies" />
         <div className={styles.list_container}>
-          <div className="list-grid">{renderBookmarkedMovies()}</div>
+          <div
+            className={renderBookmarkedMovies().length !== 0 ? "list-grid" : ""}
+          >
+            {renderBookmarkedMovies().length === 0 ? (
+              <div className={styles.empty_text}>
+                There are no bookmarked movies...
+              </div>
+            ) : (
+              renderBookmarkedMovies()
+            )}
+          </div>
         </div>
       </div>
 
       <div className={styles.bookmarked_series}>
         <Heading text="Bookmarked TV Series" />
         <div className={styles.list_container}>
-          <div className="list-grid">{renderBookmarkedSeries()}</div>
+          <div
+            className={renderBookmarkedSeries().length !== 0 ? "list-grid" : ""}
+          >
+            {renderBookmarkedSeries().length === 0 ? (
+              <div className={styles.empty_text}>
+                There are no bookmarked TV Series...
+              </div>
+            ) : (
+              renderBookmarkedSeries()
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

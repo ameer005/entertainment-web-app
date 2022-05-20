@@ -4,10 +4,16 @@ import styles from "./Home.module.scss";
 import Heading from "../../components/heading/Heading";
 import TrendingList from "../../components/trendingList/TrendingList";
 import RecommendationsList from "../../components/recommendationsList/RecommendationsList";
+import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className={styles.home}>
+    <motion.div
+      className={styles.home}
+      initial={{ y: -20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className={styles.trending}>
         <Heading text="Trending" />
 
@@ -18,7 +24,7 @@ const Home = () => {
 
         <RecommendationsList />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
