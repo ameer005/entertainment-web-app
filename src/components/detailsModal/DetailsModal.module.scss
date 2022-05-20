@@ -54,15 +54,16 @@
 }
 
 .sypnosis {
-  &__heading {
-    font-size: 1.8rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-  }
   &__text {
     line-height: 1.5;
     font-size: 1.6rem;
   }
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 .btn:link,

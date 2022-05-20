@@ -48,6 +48,24 @@ export const fetchSearchResults = createAsyncThunk(
   }
 );
 
+export const fetchMoviesGenres = createAsyncThunk(
+  "movies/fetchMoviesGenres",
+  async () => {
+    const { data } = await movieDpApi.get("/genre/movie/list");
+
+    return data;
+  }
+);
+
+export const fetchTvSeriesGenres = createAsyncThunk(
+  "movies/fetchTvSeriesGenres",
+  async () => {
+    const { data } = await movieDpApi.get(`/genre/tv/list`);
+
+    return data;
+  }
+);
+
 const initialState = {
   trendings: {
     trendingList: {},
@@ -73,6 +91,16 @@ const initialState = {
 
   search: {
     searchResults: {},
+    status: null,
+  },
+
+  moviesGenres: {
+    moviesGenresList: [],
+    status: null,
+  },
+
+  tvSeriesGenres: {
+    tvSeriesGenresList: [],
     status: null,
   },
 };
@@ -150,6 +178,30 @@ const movieSlice = createSlice({
     },
     [fetchSearchResults.rejected]: (state) => {
       state.search.status = "failed";
+    },
+
+    // FETCHING MOVIES GENRES LIST
+    [fetchMoviesGenres.pending]: (state) => {
+      state.moviesGenres.status = "loading";
+    },
+    [fetchMoviesGenres.fulfilled]: (state, { payload }) => {
+      state.moviesGenres.status = "success";
+      state.moviesGenres.moviesGenresList = payload.genres;
+    },
+    [fetchMoviesGenres.rejected]: (state) => {
+      state.moviesGenres.status = "failed";
+    },
+
+    // FETCHING TV SERIES GENRES LIST
+    [fetchTvSeriesGenres.pending]: (state) => {
+      state.tvSeriesGenres.status = "loading";
+    },
+    [fetchTvSeriesGenres.fulfilled]: (state, { payload }) => {
+      state.tvSeriesGenres.status = "success";
+      state.tvSeriesGenres.tvSeriesGenresList = payload.genres;
+    },
+    [fetchTvSeriesGenres.rejected]: (state) => {
+      state.tvSeriesGenres.status = "failed";
     },
   },
 });

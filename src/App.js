@@ -6,8 +6,19 @@ import SearchBar from "./components/searchBar/SearchBar";
 import NavBar from "./components/navBar/NavBar";
 import AnimatedRoutes from "./components/animatedRoutes/AnimatedRoutes";
 import { motion } from "framer-motion";
+import {
+  fetchMoviesGenres,
+  fetchTvSeriesGenres,
+} from "./features/movies/movieSlice";
+import { useDispatch } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchMoviesGenres());
+
+    dispatch(fetchTvSeriesGenres());
+  }, [dispatch]);
   return (
     <div className={styles.app}>
       <BrowserRouter>

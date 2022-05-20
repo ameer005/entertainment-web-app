@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactDom from "react-dom";
+import { useSelector } from "react-redux";
 
 import styles from "./DetailsModal.module.scss";
 import { IMG_URL } from "../../apis/movieDpApi";
@@ -9,6 +10,10 @@ const DetailsModal = (props) => {
   const [movieTrailer, setMovieTrailer] = useState("");
   const [tvTrailer, setTvTrailer] = useState("");
 
+  const moviesGenres = useSelector((state) => state.movies.moviesGenres);
+  const tvSeriesGenres = useSelector((state) => state.movies.tvSeriesGenres);
+
+  // Fetching video data
   useEffect(() => {
     const fetchMovieTrailer = async () => {
       if (!props.data.release_date) return;
@@ -29,6 +34,38 @@ const DetailsModal = (props) => {
     fetchMovieTrailer();
     fetchTvTrailer();
   }, []);
+
+  const renderGenresList = () => {
+    if (props.data.release_date) {
+      if (moviesGenres.status !== "success") return;
+      return props.data.genre_ids.map((id) => {
+        for (let genreList of moviesGenres.moviesGenresList) {
+          if (genreList.id === id) {
+            return (
+              <div key={id} className={styles.genre}>
+                {genreList.name}
+              </div>
+            );
+          }
+        }
+      });
+    }
+
+    if (tvSeriesGenres.status !== "success") return;
+    return props.data.genre_ids.map((id) => {
+      for (let genreList of tvSeriesGenres.tvSeriesGenresList) {
+        if (genreList.id === id) {
+          return (
+            <div key={id} className={styles.genre}>
+              {genreList.name}
+            </div>
+          );
+        }
+      }
+    });
+  };
+
+  //  Building gneres list
   return ReactDom.createPortal(
     <div onClick={() => props.setShowModal(false)} className={styles.backdrop}>
       <div onClick={(e) => e.stopPropagation()} className={styles.modal}>
@@ -44,8 +81,13 @@ const DetailsModal = (props) => {
             {props.data.name || props.data.original_title}
           </div>
 
+          <div className={styles.genres}>
+            <div className={styles.heading}>Genres</div>
+            {renderGenresList()}
+          </div>
+
           <div className={styles.sypnosis}>
-            <div className={styles.sypnosis__heading}>Sypnosis</div>
+            <div className={styles.heading}>Sypnosis</div>
             <div className={styles.sypnosis__text}>{props.data.overview}</div>
           </div>
 
