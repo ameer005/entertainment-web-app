@@ -1,8 +1,14 @@
+@import "../../common/mixins.scss";
+
 .form {
   display: flex;
   align-items: center;
   gap: 2.4rem;
   padding: 2rem 0 0 0;
+
+  @include respond(tab-land-min) {
+    padding: 0;
+  }
 }
 
 .icon_search {
@@ -20,6 +26,10 @@
   padding: 0.8rem 0;
   outline: none;
   border-bottom: 1px solid transparent;
+
+  @include respond(phone) {
+    font-size: 1.8rem;
+  }
 
   &:focus {
     border-bottom: 1px solid var(--color-blue-grey);

@@ -67,8 +67,11 @@ li {
   }
 
   @include respond(phone) {
-    grid-template-columns: repeat(auto-fill, minmax(14.2rem, 1fr));
     gap: 1.8rem;
+  }
+
+  @include respond(phone-min) {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -78,5 +81,5 @@ li {
 
 .swiper-slide {
   width: auto !important;
-  margin-right: 4rem !important;
+  // margin-right: 4rem !important;
 }

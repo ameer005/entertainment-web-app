@@ -30,7 +30,22 @@ const TrendingList = () => {
 
   return (
     <div className={styles.list_container}>
-      <Swiper slidesPerView={10.9} className="mySwiper">
+      <Swiper
+        spaceBetween={15}
+        slidesPerView={"auto"}
+        breakpoints={{
+          500: {
+            spaceBetween: 26,
+          },
+          700: {
+            spaceBetween: 28,
+          },
+          1200: {
+            spaceBetween: 30,
+          },
+        }}
+        className="mySwiper"
+      >
         {renderTrendingList()}
       </Swiper>
     </div>

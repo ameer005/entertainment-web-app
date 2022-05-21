@@ -1,7 +1,11 @@
 @import "../../common/mixins.scss";
 
 .header {
-  height: 90vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 3.2rem;
+  height: calc(100vh - 7rem);
   background-color: var(--color-blue-light);
 
   padding: 3.2rem;
@@ -11,14 +15,14 @@
   flex-direction: column;
   gap: 7rem;
 
-  position: fixed;
-
   @include respond(tab-land-min) {
+    left: 3rem;
+    margin: 3.2rem 0;
     gap: 0;
     position: fixed;
     align-items: center;
     flex-direction: row;
-    width: 95%;
+    width: calc(100% - 6rem);
     height: 8rem;
     z-index: 30;
 
@@ -26,6 +30,8 @@
   }
 
   @include respond(phone) {
+    margin: 0;
+    left: 0;
     width: 100%;
     border-radius: 0;
   }

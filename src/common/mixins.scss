@@ -26,4 +26,11 @@
       @content;
     }
   }
+
+  // 350ox
+  @if $breakpoint == phone-min {
+    @media only screen and (max-width: 22em) {
+      @content;
+    }
+  }
 }
