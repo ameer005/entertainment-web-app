@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -7,7 +7,6 @@ import "swiper/css";
 import styles from "./TrendingList.module.scss";
 import MovieCard from "../movieCard/MovieCard";
 import { fetchTrendings } from "../../features/movies/movieSlice";
-import LoaderCircle from "../loaderCircle/LoaderCircle";
 
 const TrendingList = () => {
   const dispatch = useDispatch();

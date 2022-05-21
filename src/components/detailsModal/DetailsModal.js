@@ -113,6 +113,7 @@ const DetailsModal = (props) => {
 
           <a
             target="_blank"
+            rel="noopener noreferrer"
             className={styles.btn}
             href={`https://www.youtube.com/watch?v=${
               props.data.release_date ? movieTrailer : tvTrailer

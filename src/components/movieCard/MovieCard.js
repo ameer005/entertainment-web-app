@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 import { IMG_URL } from "../../apis/movieDpApi";
 import BookmarkBtn from "../bookmarkBtn/BookmarkBtn";
