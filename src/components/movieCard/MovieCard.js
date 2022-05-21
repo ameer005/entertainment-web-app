@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { IMG_URL } from "../../apis/movieDpApi";
 import BookmarkBtn from "../bookmarkBtn/BookmarkBtn";
@@ -35,7 +36,8 @@ const TrendingCard = (props) => {
         >
           <button className={styles.hover_btn}>
             <img className={styles.play_icon} src={playIcon} alt="play" />
-            Play
+            {/* Play */}
+            Details
           </button>
         </div>
       </div>
@@ -82,9 +84,11 @@ const TrendingCard = (props) => {
             : props.data.name}
         </div>
       </div>
-      {showModal ? (
-        <DetailsModal setShowModal={setShowModal} data={props.data} />
-      ) : null}
+      <AnimatePresence exitBeforeEnter>
+        {showModal ? (
+          <DetailsModal setShowModal={setShowModal} data={props.data} />
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 };
