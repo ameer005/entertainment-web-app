@@ -1,3 +1,5 @@
+@import "../../common/mixins.scss";
+
 .backdrop {
   position: fixed;
   top: 0;
@@ -23,9 +25,12 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 6.4rem;
-  // align-items: center;
-  // flex-direction: column;
-  // grid-template-columns: repeat(2, 1fr);
+
+  @include respond(tab-pot) {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 3.2rem;
+  }
 }
 
 .img_box {
@@ -33,6 +38,10 @@
   height: 40rem;
   overflow: hidden;
   border-radius: 0.9rem;
+
+  @include respond(tab-pot) {
+    height: 100%;
+  }
 }
 
 // will make image landscape for smallers screens
@@ -40,6 +49,10 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
+
+  @include respond(tab-pot) {
+    display: none;
+  }
 }
 
 .img_land {
@@ -47,17 +60,30 @@
   height: 100%;
   object-fit: contain;
   display: none;
+
+  @include respond(tab-pot) {
+    display: block;
+  }
 }
 
 .modal_content {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
+
+  @include respond(tab-pot) {
+    gap: 2.4rem;
+  }
 }
 
 .title {
   font-size: 4.2rem;
   line-height: 1.2;
+
+  @include respond(tab-pot) {
+    text-align: center;
+    font-size: 3.2rem;
+  }
 }
 
 .sypnosis {

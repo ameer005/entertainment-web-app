@@ -1,3 +1,4 @@
+@import "../../common/mixins.scss";
 .card {
   border-radius: 0.9rem;
   cursor: pointer;
@@ -108,9 +109,12 @@
 
 .big {
   width: 45rem;
-  height: 25rem;
   overflow: hidden;
   position: relative;
+
+  @include respond(tab-pot) {
+    width: 30rem;
+  }
 
   &:hover .card__img {
     transform: scale(1.1);
@@ -120,11 +124,23 @@
     opacity: 1;
   }
 
+  .img_box {
+    height: 25rem;
+
+    @include respond(tab-pot) {
+      height: 18rem;
+    }
+  }
+
   .details {
     position: absolute;
     bottom: 1.8rem;
     left: 1.8rem;
     gap: 0.6rem;
+
+    // @include respond(tab-pot) {
+    //   bottom: 4.8rem;
+    // }
   }
 
   .info {
@@ -133,6 +149,10 @@
 
   .title {
     font-size: 2.8rem;
+
+    @include respond(tab-pot) {
+      font-size: 1.8rem;
+    }
   }
 }
 
@@ -145,6 +165,7 @@
     overflow: hidden;
     margin-bottom: 1.2rem;
     border-radius: 0.9rem;
+    height: 17.4rem;
 
     &:hover .card__img {
       transform: scale(1.1);
@@ -152,6 +173,10 @@
 
     &:hover .hover_container {
       opacity: 1;
+    }
+
+    @include respond(tab-pot) {
+      height: 15em;
     }
   }
 

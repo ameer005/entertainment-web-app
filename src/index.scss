@@ -1,3 +1,5 @@
+@import "./common/mixins.scss";
+
 *,
 *::after,
 *::before {
@@ -19,6 +21,18 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   overflow-x: hidden;
+
+  @include respond(tab-land) {
+    font-size: 56.25%;
+  }
+
+  @include respond(tab-pot) {
+    font-size: 50%;
+  }
+
+  @include respond(phone) {
+    // font-size: 43.75%;
+  }
 }
 
 body {
@@ -39,10 +53,23 @@ li {
 
 .list-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
-  // grid-template-columns: repeat(4, 1fr);
+  // grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   row-gap: 3.2rem;
   column-gap: 3.2rem;
+
+  @include respond(tab-land-min) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond(tab-pot) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone) {
+    grid-template-columns: repeat(auto-fill, minmax(14.2rem, 1fr));
+    gap: 1.8rem;
+  }
 }
 
 .swiper-wrapper {

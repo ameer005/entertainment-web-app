@@ -1,22 +1,39 @@
+@import "./common/mixins.scss";
+
 .app {
   display: grid;
   grid-template-columns: 9.5rem 1fr;
-  grid-template-rows: auto 1fr;
+  // grid-template-rows: auto 1fr;
   column-gap: 3.2rem;
   row-gap: 3.2rem;
   padding: 3.2rem;
+
+  @include respond(tab-land-min) {
+    grid-template-rows: 8rem;
+    grid-template-columns: 1fr;
+  }
+
+  @include respond(phone) {
+    padding: 0;
+  }
 }
 
 .header {
   grid-row: span 2;
 
-  // background-color: white;
+  @include respond(tab-land-min) {
+    grid-row: 1;
+  }
 }
 
 .search {
-  // background-color: red;
+  @include respond(phone) {
+    padding: 0rem 2.4rem;
+  }
 }
 
 .main {
-  // background-color: pink;
+  @include respond(phone) {
+    padding: 0rem 2.4rem;
+  }
 }
