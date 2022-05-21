@@ -42,6 +42,13 @@
   object-fit: contain;
 }
 
+.img_land {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: none;
+}
+
 .modal_content {
   display: flex;
   flex-direction: column;

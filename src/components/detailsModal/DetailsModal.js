@@ -75,6 +75,11 @@ const DetailsModal = (props) => {
             src={`${IMG_URL}${props.data.poster_path}`}
             alt=""
           />
+          <img
+            className={styles.img_land}
+            src={`${IMG_URL}${props.data.backdrop_path}`}
+            alt=""
+          />
         </div>
         <div className={styles.modal_content}>
           <div className={styles.title}>
