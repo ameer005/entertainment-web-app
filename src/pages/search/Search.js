@@ -1,12 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Search.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Heading from "../../components/heading/Heading";
 import MovieCard from "../../components/movieCard/MovieCard";
+import { resetSearch } from "../../features/movies/movieSlice";
+
+import { useLocation } from "react-router-dom";
 
 import { motion } from "framer-motion";
 
 const Search = () => {
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useState(() => {
+    dispatch(resetSearch());
+  }, [location.pathname]);
+
   const data = useSelector((state) => state.movies.search);
   if (data.status === "failed") return;
 
@@ -38,19 +48,23 @@ const Search = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
-      <div className={styles.bookmarked_movies}>
-        <Heading text="Movies" />
-        <div className={styles.list_container}>
-          <div className="list-grid">{renderMovies()}</div>
-        </div>
-      </div>
+      {data.status === "success" ? (
+        <>
+          <div className={styles.bookmarked_movies}>
+            <Heading text="Movies" />
+            <div className={styles.list_container}>
+              <div className="list-grid">{renderMovies()}</div>
+            </div>
+          </div>
 
-      <div className={styles.bookmarked_series}>
-        <Heading text="TV Series" />
-        <div className={styles.list_container}>
-          <div className="list-grid">{renderSeries()}</div>
-        </div>
-      </div>
+          <div className={styles.bookmarked_series}>
+            <Heading text="TV Series" />
+            <div className={styles.list_container}>
+              <div className="list-grid">{renderSeries()}</div>
+            </div>
+          </div>
+        </>
+      ) : null}
     </motion.div>
   );
 };

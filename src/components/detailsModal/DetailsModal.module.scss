@@ -15,6 +15,7 @@
 }
 
 .modal {
+  position: relative;
   margin: 3.2rem;
   border-radius: 0.9rem;
   flex-grow: 1;
@@ -33,7 +34,7 @@
   }
 
   @include respond(phone) {
-    padding: 2.4rem;
+    padding: 4.8rem 2.4rem 2.4rem 2.4rem;
     gap: 2.4rem;
   }
 }
@@ -141,4 +142,21 @@
   background-color: var(--color-white);
   padding: 0.4rem 1.2rem;
   border-radius: 0.9rem;
+}
+
+.close {
+  transform: scale(0.7);
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  fill: var(--color-white);
+  cursor: pointer;
+  display: none;
+
+  @include respond(phone) {
+    display: block;
+    transform: scale(0.5);
+    top: 0.8rem;
+    right: 0.8rem;
+  }
 }
