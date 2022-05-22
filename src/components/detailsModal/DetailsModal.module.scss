@@ -155,7 +155,7 @@
 
   @include respond(phone) {
     display: block;
-    transform: scale(0.5);
+    transform: scale(0.6);
     top: 0.8rem;
     right: 0.8rem;
   }
