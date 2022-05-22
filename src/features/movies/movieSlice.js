@@ -118,6 +118,9 @@ const movieSlice = createSlice({
       );
       state.bookmarked = afterDelete;
     },
+    resetSearch: (state) => {
+      state.search = { searchResults: {}, status: null };
+    },
   },
   extraReducers: {
     // FETCHING TRENDINGS
@@ -206,6 +209,6 @@ const movieSlice = createSlice({
   },
 });
 
-export const { addBookmark, deleteBookmark } = movieSlice.actions;
+export const { addBookmark, deleteBookmark, resetSearch } = movieSlice.actions;
 
 export default movieSlice.reducer;
